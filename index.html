@@ -3,18 +3,29 @@
 <head>
     <title>M3u8Player</title>
     <script src="hls.light.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <style>
+        *{margin:20;padding:0}
+        .box{
+            width: 100%;
+            height: auto;
+            background-color: antique-white;
+        }
+    </style>
 </head>
 
 <body>
 <label>URL:</label>
-<input type="text" id="url" autocomplete="on" width="100%"
+<input type="text" id="url" autocomplete="on"  class="box"
        value="https://hls.cntv.myhwcdn.cn/asp/hls/450/0303000a/3/default/87f87ba569c147e3805f80e4844d2de9/450.m3u8"/><br>
-<!--<button icon="/play.png"  onclick="play()">播放</button>-->
+<button onclick="play()">播放</button>
 
-<img src="play.png" onclick="play()"></img>
+<!--<img src="play.png" onclick="play()"></img>-->
 <br>
 
-<video id="video" controls></video>
+<video class="box" id="video" controls></video>
 <script>
         function play() {
             //alert('芝士雪豹')
@@ -35,9 +46,6 @@
                 });
               }
         }
-
-
-
 
 
 </script>
