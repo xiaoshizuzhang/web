@@ -2,18 +2,20 @@
 <html>
 <head>
     <title>M3u8Player</title>
-    <script src="ckplayer/hls.js/hls.js"></script>
+    <script src="hls.light.min.js"></script>
 </head>
 
 <body>
 <label>URL:</label>
-<input type="text" id="url"  autocomplete="on" width="100%"
+<input type="text" id="url" autocomplete="on" width="100%"
        value="https://hls.cntv.myhwcdn.cn/asp/hls/450/0303000a/3/default/87f87ba569c147e3805f80e4844d2de9/450.m3u8"/><br>
-<button id="playBt" onclick="play()">播放</button>
+<!--<button icon="/play.png"  onclick="play()">播放</button>-->
+
+<img src="play.png" onclick="play()"></img>
 <br>
 
 <video id="video" controls></video>
-    <script>
+<script>
         function play() {
             //alert('芝士雪豹')
               var playUrl=document.getElementById("url").value;
@@ -24,16 +26,21 @@
                 hls.loadSource(playUrl);
                 hls.attachMedia(video);
                 hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                  // video.play();
+                   video.play();
                 });
               } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
                 video.src = playUrl;
                 video.addEventListener("loadedmetadata", function () {
-                  // video.play();
+                   video.play();
                 });
               }
         }
-    </script>
+
+
+
+
+
+</script>
 
 </body>
 </html>
