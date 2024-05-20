@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>M3u8Player</title>
+    <script src="ckplayer/hls.js/hls.js"></script>
+</head>
+
+<body>
+<label>URL:</label>
+<input type="text" id="url"  autocomplete="on" width="100%"
+       value="https://hls.cntv.myhwcdn.cn/asp/hls/450/0303000a/3/default/87f87ba569c147e3805f80e4844d2de9/450.m3u8"/><br>
+<button id="playBt" onclick="play()">播放</button>
+<br>
+
+<video id="video" controls></video>
+    <script>
+        function play() {
+            //alert('芝士雪豹')
+              var playUrl=document.getElementById("url").value;
+
+              var video = document.getElementById("video");
+              if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(playUrl);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                  // video.play();
+                });
+              } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                video.src = playUrl;
+                video.addEventListener("loadedmetadata", function () {
+                  // video.play();
+                });
+              }
+        }
+    </script>
+
+</body>
+</html>
+
